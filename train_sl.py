@@ -10,6 +10,8 @@ import subprocess
 import os
 import warnings
 
+# to improve the precision of floating point operations
+torch.set_float32_matmul_precision('high')
 warnings.filterwarnings(
     "ignore", ".*Trying to infer the `batch_size` from an ambiguous collection.*"
 )
@@ -52,8 +54,8 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-m","--model", 
-        default="Fast",
-        choices=['Accurate', 'Fast'],
+        default="Hpa",
+        choices=['Accurate', 'Fast', 'Hpa'],
         type=str,
         help="Model to use."
     )
